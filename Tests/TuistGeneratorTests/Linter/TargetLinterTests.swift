@@ -162,7 +162,7 @@ final class TargetLinterTests: TuistUnitTestCase {
         )
     }
 
-    func test_lint_when_entitlements_not_missing() throws {
+    func test_lint_when_infoplist_not_found() throws {
         let temporaryPath = try temporaryPath()
         let path = temporaryPath.appending(component: "Info.plist")
         let target = Target.test(infoPlist: .file(path: path))
@@ -175,7 +175,7 @@ final class TargetLinterTests: TuistUnitTestCase {
         )
     }
 
-    func test_lint_when_infoplist_not_found() throws {
+    func test_lint_when_entitlements_not_missing() throws {
         let temporaryPath = try temporaryPath()
         let path = temporaryPath.appending(component: "App.entitlements")
         let target = Target.test(entitlements: .file(path: path))
