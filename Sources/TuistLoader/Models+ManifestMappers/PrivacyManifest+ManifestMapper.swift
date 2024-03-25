@@ -17,7 +17,7 @@ extension TuistGraph.PrivacyManifest {
             return .file(path: try generatorPaths.resolve(path: privacyManifestPath))
         case let .dictionary(dictionary):
             return .dictionary(
-                dictionary.mapValues { TuistGraph.Plist.Value.from(manifest: $0)}
+                dictionary.mapValues { TuistGraph.Plist.Value.from(manifest: $0) }
             )
         case .none:
             return .none

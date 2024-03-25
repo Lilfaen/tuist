@@ -173,7 +173,7 @@ public enum PrivacyManifest: Equatable, Codable {
 
     // User defined dictionary of keys/values for an .xcprivacy file.
     case dictionary([String: Plist.Value])
-    
+
     // MARK: - Public
 
     public var path: AbsolutePath? {
