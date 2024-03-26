@@ -74,6 +74,15 @@ extension TuistGraph.ResourceFileElement {
                 tags: tags,
                 inclusionCondition: condition?.asGraphCondition
             ) }
+        case let .privacyManifest(
+            tracking: tracking,
+            trackingDomains: trackingDomains,
+            collectedDataTypes: collectedDataTypes,
+            accessedAPITypes: accessedAPITypes
+        ):
+            // TODO: Dark magic here
+
+            return []
         }
     }
 }

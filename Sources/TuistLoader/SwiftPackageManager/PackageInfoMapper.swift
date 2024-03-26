@@ -821,6 +821,9 @@ extension ResourceFileElements {
                 return true
             case .folderReference:
                 return true
+            case .privacyManifest:
+                // TODO: Check here if file exists
+                return true
             }
         }
 

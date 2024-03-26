@@ -14,9 +14,17 @@ public enum ResourceFileElement: Codable, Equatable {
     /// Relative path to a directory to include as a folder reference and ODR tags
     case folderReference(path: Path, tags: [String] = [], inclusionCondition: PlatformCondition? = nil)
 
+    case privacyManifest(
+        tracking: Bool,
+        trackingDomains: [String],
+        collectedDataTypes: [Plist.Value],
+        accessedAPITypes: [Plist.Value]
+    )
+
     private enum TypeName: String, Codable {
         case glob
         case folderReference
+        case privacyManifest
     }
 
     private var typeName: TypeName {
@@ -25,6 +33,8 @@ public enum ResourceFileElement: Codable, Equatable {
             return .glob
         case .folderReference:
             return .folderReference
+        case .privacyManifest:
+            return .privacyManifest
         }
     }
 }
