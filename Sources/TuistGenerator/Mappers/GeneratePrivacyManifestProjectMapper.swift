@@ -61,7 +61,11 @@ public final class GeneratePrivacyManifestProjectMapper: ProjectMapping {
             .appending(component: "PrivacyInfo.xcprivacy")
         let sideEffect = SideEffectDescriptor.file(FileDescriptor(path: privacyManifestPath, contents: data))
 
-        let newTarget = target.with(privacyManifest: PrivacyManifest.generatedFile(path: privacyManifestPath, data: data))
+        var resources = target.resources
+        resources.append(.init(path: privacyManifestPath))
+
+        var newTarget = target
+        newTarget.resources = resources
 
         return (newTarget, [sideEffect])
     }

@@ -318,14 +318,6 @@ public struct Target: Equatable, Hashable, Comparable, Codable {
         return copy
     }
 
-    /// Returns a new copy of the target with the given privacyManifest set.
-    /// - Parameter privacyManifest: privacyManifest to be set to the copied instance.
-    public func with(privacyManifest: PrivacyManifest) -> Target {
-        var copy = self
-        copy.privacyManifest = privacyManifest
-        return copy
-    }
-
     /// Returns a new copy of the target with the given scripts.
     /// - Parameter scripts: Actions to be set to the copied instance.
     public func with(scripts: [TargetScript]) -> Target {
