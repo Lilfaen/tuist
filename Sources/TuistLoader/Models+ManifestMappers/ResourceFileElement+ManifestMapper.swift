@@ -80,9 +80,20 @@ extension TuistGraph.ResourceFileElement {
             collectedDataTypes: collectedDataTypes,
             accessedAPITypes: accessedAPITypes
         ):
-            // TODO: Dark magic here
+            let collectedDataTypes: [[String: TuistGraph.Plist.Value]] = collectedDataTypes.map {
+                $0.mapValues { TuistGraph.Plist.Value.from(manifest: $0)}
+            }
 
-            return []
+            let accessedAPITypes: [[String: TuistGraph.Plist.Value]] = accessedAPITypes.map {
+                $0.mapValues { TuistGraph.Plist.Value.from(manifest: $0)}
+            }
+
+            return [privacyManifest(
+                tracking: tracking,
+                trackingDomains: trackingDomains,
+                collectedDataTypes: collectedDataTypes,
+                accessedAPITypes: accessedAPITypes
+            )]
         }
     }
 }

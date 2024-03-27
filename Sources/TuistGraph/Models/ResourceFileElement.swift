@@ -9,12 +9,21 @@ public enum ResourceFileElement: Equatable, Hashable, Codable {
     /// A directory path to include as a folder reference, ODR tags list and inclusion condition.
     case folderReference(path: AbsolutePath, tags: [String] = [], inclusionCondition: PlatformCondition? = nil)
 
+    case privacyManifest(
+        tracking: Bool,
+        trackingDomains: [String],
+        collectedDataTypes: [[String: Plist.Value]],
+        accessedAPITypes: [[String: Plist.Value]]
+    )
+
     public var path: AbsolutePath {
         switch self {
         case let .file(path, _, _):
             return path
         case let .folderReference(path, _, _):
             return path
+        case .privacyManifest:
+            return ""
         }
     }
 
@@ -24,6 +33,8 @@ public enum ResourceFileElement: Equatable, Hashable, Codable {
             return false
         case .folderReference:
             return true
+        case .privacyManifest:
+            return false
         }
     }
 
@@ -33,6 +44,8 @@ public enum ResourceFileElement: Equatable, Hashable, Codable {
             return tags
         case let .folderReference(_, tags, _):
             return tags
+        case .privacyManifest:
+            return []
         }
     }
 
@@ -42,6 +55,8 @@ public enum ResourceFileElement: Equatable, Hashable, Codable {
             return condition
         case let .folderReference(_, _, condition):
             return condition
+        case .privacyManifest:
+            return nil
         }
     }
 

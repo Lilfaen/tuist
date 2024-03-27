@@ -7,7 +7,7 @@ public enum Plist {
     case infoPlist(InfoPlist)
     case entitlements(Entitlements)
 
-    public indirect enum Value: Equatable, Codable {
+    public indirect enum Value: Equatable, Codable, Hashable {
         case string(String)
         case integer(Int)
         case real(Double)

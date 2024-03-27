@@ -172,6 +172,25 @@ extension TuistGraph.Target {
                 } else {
                     filteredResources.append(fileElement)
                 }
+            case let .privacyManifest(
+                tracking: tracking,
+                trackingDomains: trackingDomains,
+                collectedDataTypes: collectedDataTypes,
+                accessedAPITypes: accessedAPITypes
+            ):
+                let dictionary: [String: TuistGraph.Plist.Value] = [
+                    "NSPrivacyTracking": .boolean(tracking),
+                    "NSPrivacyTrackingDomains": .array(trackingDomains.map { .string($0) }),
+                    "NSPrivacyCollectedDataTypes": .array(collectedDataTypes.map {
+                        .dictionary($0)
+                    } ),
+                    "NSPrivacyAccessedAPITypes": .array(accessedAPITypes.map {
+                        .dictionary($0)
+                    } ),
+                ]
+
+                // TODO: How to proceed?
+                // PropertyListSerialization? Here or where
             }
         }
 

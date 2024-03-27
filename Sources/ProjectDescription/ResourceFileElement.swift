@@ -17,8 +17,8 @@ public enum ResourceFileElement: Codable, Equatable {
     case privacyManifest(
         tracking: Bool,
         trackingDomains: [String],
-        collectedDataTypes: [Plist.Value],
-        accessedAPITypes: [Plist.Value]
+        collectedDataTypes: [[String: Plist.Value]],
+        accessedAPITypes: [[String: Plist.Value]]
     )
 
     private enum TypeName: String, Codable {
